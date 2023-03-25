@@ -1,2 +1,0 @@
-# CEase
-Portfolio-project
