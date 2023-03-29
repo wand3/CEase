@@ -21,13 +21,16 @@ def create_app():
     from .api.v1.views import api as api_blueprint
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    # from .auth import auth as auth_blueprint
+    # app.register_blueprint(auth_blueprint, url_prefix='/auth')
     
     from .web_flask import main as main_blueprint
     app.register_blueprint(main_blueprint, url_prefix='/')
 
-    # auth_create_module(app)
+    # from auth import create_module for flask-login init
+    from .auth import create_module as auth_create_module
+
+    auth_create_module(app)
     # main_create_module(app)
 
     return app

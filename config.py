@@ -13,7 +13,7 @@ class DevConfig(Config):
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database.db')
 
     #mysql db uri
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:cease@localhost/cease_db'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:cease@localhost/cease'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 

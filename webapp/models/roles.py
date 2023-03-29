@@ -15,7 +15,7 @@ class Roles(db.Model):
 
     def __init__(self, role, role_desc):
         self.role = role
-        self.role_desc= role_desc
+        self.role_desc = role_desc
 
     def __repr__(self):
         return "< Role {}: Description {}>".format(self.role, self.role_desc)
