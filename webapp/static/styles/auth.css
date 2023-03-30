@@ -1,55 +1,23 @@
 
-main {
-    /* position: relative; */
-    width: 1440px;
-    height: 850px;
-
-    background: rgba(236, 226, 235, 0.58);
-}
-/* register */
-
-main .register-img{
-    position: absolute;
-    width: 380px;
-    height: 540px;
-    left: 151px;
-    top: 100px;
-    /* background: url({{ url_for('static', filename='images/pexels-charlotte-may-signup.jpeg') }}); */
-    /* background: url(static/images/pexels-charlotte-may-signup.jpg); */
-    mix-blend-mode: multiply;
-    border-radius: 10px;
-}
-
-/* Polygon 1 */
-main .polygon{
-    position: absolute;
-    width: 400px;
-    height: 500px;
-    bottom: 50px;
-    background: #D9D9D9;
-    mix-blend-mode: color-burn;
-    transform: rotate(-66.37deg);
-}
-main .logo-img{
-    position: absolute;
-    width: 201px;
-    height: 187px;
-    /* left: 1381px; */
-    bottom: 600px;
-}
-#login-section {
-    /* Details-section */
-    position: absolute;
+header .navbar-nav .login-signup button{
+    margin-left: 10px;
+    border-radius: 10px; 
+    height: 40px;
     width: auto;
-    height: 412px;
-    left: 700px;
-    top: 402px;
+    border: 2px solid rgb(245, 240, 240);
+    padding: 10px 20px;
+}
 
-    border-radius: 10px;
+header .navbar-nav .login-signup button a{
+    text-decoration: none;
+    color: #1c2b33;
+    padding: 0px 0 15px 0;
+    font-size: initial;
 }
-.form-group {
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 3.05%;
-}
+/* header .navbar-nav .login-signup {
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    height: auto;
+    margin-right: 35px;
+} */
