@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>CEase Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/auth.css') }}">
+  </head>
+  <body style="margin: 0; padding: 0;">
+	<main>
+        <div class="col-6">
+            <img class="register-img" src="{{ url_for('static', filename='images/pexels-charlotte-may-signup.jpeg') }}">
+        </div>
+        <div class="col-6" id="login-section">
+                <img class="logo-img" src="{{ url_for('static', filename='images/logo.svg') }}">
+                <form id="login" onsubmit="process(event)" method="POST" action="{{ url_for('.register')}}" class="signin-form">
+
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <!-- {{ form.email.label }} -->
+                        {{ form.email(class="form-control", type="email", placeholder="Email") }}
+                        {% for error in form.email.errors %}
+                        <span style="color: #ffffff">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <!-- {{ form.username.label }} -->
+                        {{ form.username(class="form-control", type="username", placeholder="Username") }}
+                        {% for error in form.username.errors %}
+                        <span style="color: #ffffff">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <!-- {{ form.password.label }} -->
+                        {{ form.password(class="form-control", type="password", placeholder="Enter Password", id="password-field") }}
+    {#                                {% for error in form.password.errors %}#}
+    {#                                <span style="color: #ffffff">{{ error }}</span>#}
+    {#                                {% endfor %}#}
+                    </div>
+                    <div class="form-group">
+                        {{ form.confirm(class="form-control", type="password", placeholder="Confirm Password") }}
+    {#                                {% for error in form.email.errors %}#}
+    {#                                <span style="color: #ffffff">[{{ error }}]</span>#}
+    {#                                {% endfor %}#}
+                    </div>
+                    {% for field, errors in form.errors.items() %}
+                        <small style="margin: 12px 12px">
+                            {{ ', '.join(errors) }}
+                        </small>
+                    {% endfor %}
+
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary submit px-3">Sign up</button>
+                    </div>
+                    <div class="form-group d-md-flex">
+                        <div class="w-100 text-center">
+                            <a href="{{ url_for('auth.login') }}" style="color: #fffa2b">already a member?</a>
+                        </div>
+
+                    </div>
+                </form>
+            <!-- <div class="polygon"></div> -->
+        </div>
+        
+    </main>
+	<!-- <footer style="background-color: #00FF00;
+		       height: 60px;
+		       line-height: 60px;
+		       width: 100%;
+		       bottom: 0px;
+		       position: absolute;
+		       text-align: center;">
+	  Made in Jos
+	</footer> -->
+  </body>
+</html>

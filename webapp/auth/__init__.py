@@ -3,6 +3,7 @@ from flask import flash, redirect, url_for, session, abort, Blueprint
 from flask_login import current_user
 from flask_login import LoginManager, login_user
 from flask_login import AnonymousUserMixin
+from flask_bcrypt import Bcrypt
 
 
 auth = Blueprint('auth', __name__)
@@ -14,6 +15,7 @@ class CEaseAnonymous(AnonymousUserMixin):
         self.username = 'Guest'
 
 
+bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = "auth.login"
 login_manager.session_protection = "strong"
@@ -24,6 +26,7 @@ login_manager.anonymous_user = CEaseAnonymous
 
 def create_module(app, **kwargs):
     login_manager.init_app(app)
+    bcrypt.init_app(app)
 
     app.register_blueprint(auth, url_prefix='/auth')
 

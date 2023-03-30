@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm as Form
-from flask_wtf import RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, Length, EqualTo, URL
-from ..models.user import User
+from wtforms.validators import DataRequired, Length, EqualTo, URL, ValidationError
+
 # from . import authenticate
 
 
@@ -25,6 +24,7 @@ class LoginForm(Form):
 
 
 class RegisterForm(Form):
+    email = StringField('Email', [DataRequired(), Length(max=255)])
     username = StringField('Username', [DataRequired(), Length(max=255)])
     password = PasswordField('Password', [DataRequired(), Length(min=8)])
     confirm = PasswordField('Confirm Password', [
@@ -32,18 +32,14 @@ class RegisterForm(Form):
         EqualTo('password')
     ])
 
-    def validate(self):
-        check_validate = super(RegisterForm, self).validate()
+    
+    #validators
+    def validate_email(self, field):
+        from ..models.user import User
+        if User.query.filter_by(email=field.data).first():
+            raise ValidationError('Email already registered.')
 
-        # if our validators do not pass
-        if not check_validate:
-            return False
-
-        user = User.query.filter_by(username=self.username.data).first()
-
-        # Is the username already being used
-        if user:
-            self.username.errors.append("User with that name already exists")
-            return False
-
-        return True
+    def validate_username(self, field):
+        from ..models.user import User
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Username already in use.')
