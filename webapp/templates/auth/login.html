@@ -6,8 +6,8 @@
 	<title>CEase Login</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/auth.css') }}">
   </head>
-  <body style="margin: 0; padding: 0; background-color: #091a22eb;">
-	<header style="background-color:#69e7f45c;;
+  <body >
+	<header style="background-color:#376e78;
 		       height: 70px;
 		       width: 100%;">
 		<nav class="navbar-nav" style="display: flex;">
@@ -17,6 +17,7 @@
 				width: auto;
 				margin: 10px 30px;"></a>
 			</div>
+
 			<div class="login-signup" style="margin: auto 35px 25px auto;">
 				<button class="btn" style="background-color: yellowgreen;"><a href="{{ url_for('auth.login') }}">Login</a></button>
 				<button class="btn" style="background-color: rgba(50, 187, 205, 0.671);"><a href="{{ url_for('auth.register') }}">Register</a></button>
@@ -24,18 +25,54 @@
 		</nav>
 	</header>
 	<main>
+		<div class="row login-signup-section" style="background: url('/static/images/login-bg.jpg') center / cover no-repeat ;">
+			<div class="login-wrap col-7">
+				<form method="post" action="{{url_for('.login')}}" class="signin-form">
+					{{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.email(class="form-control", type="email", placeholder="Enter Email") }}
+                            {% for error in form.email.errors %}
+                            <span style="color: #ffffff">{{ error }}</span>
+                            {% endfor %}
+
+                        </div>
+                        <div class="form-group">
+                            {{ form.password(class="form-control", type="password", placeholder="Enter Password", id="password-field") }}
+                            {% for error in form.password.errors %}
+                            <span style="color: #ffffff">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% for message in get_flashed_messages() %}
+							<div class="alert alert-warning " style="margin: 10px 0; background-color: transparent;">
+								<!-- <button type="button" class="close" data-dismiss="alert" style="color: white">&times;</button> -->
+								{{ message }}
+							</div>
+						{% endfor %}
+                        <div class="form-group d-md-flex">
+                            <div class="w-100" style="color: #ffffff;">
+                                {{ form.remember }} {{ form.remember.label }}
+                            </div>
+							<button type="submit" class="form-control btn btn-primary-submit">Log In</button>
+                            <!-- <div class="text-md-right">
+                            {#  <a href="{{ url_for('auth.reset_password_request') }}" style="color: #fa1e0e">Forgot Password</a> #} 
+                            </div> -->
+                        </div>
+				</form>
+				<h5 class="form-group"><a href="{{ url_for('auth.register') }}" style="text-decoration: underline; color: #ffffff; font-size: 15px; margin: 30px 0 auto 0px; text-align: center;">Don't Have an account?</a></h5>
+
+			</div>
+		</div>
 
 	</main>
 	<footer style="color: white;
 		       height: 40px;
 		       line-height: 20px;
 		       width: 100%;
-		       bottom: 0px;
+		       bottom: 10px;
 		       position: absolute;
-		       text-align: center;">
+		       text-align: center;
+			   position: fixed;">
 	  Made in Jos
 	</footer>
   </body>
 </html>
-
-

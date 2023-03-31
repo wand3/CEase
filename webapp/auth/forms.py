@@ -6,21 +6,9 @@ from wtforms.validators import DataRequired, Length, EqualTo, URL, ValidationErr
 
 
 class LoginForm(Form):
-    username = StringField('Username', [DataRequired(), Length(max=255)])
+    email = StringField('Email', [DataRequired(), Length(max=255)])
     password = PasswordField('Password', [DataRequired()])
     remember = BooleanField("Remember Me")
-
-    def validate(self):
-        check_validate = super(LoginForm, self).validate()
-
-        # if our validators do not pass
-        if not check_validate:
-            return False
-
-        if not authenticate(self.username.data, self.password.data):
-            self.username.errors.append('Invalid username or password')
-            return False
-        return True
 
 
 class RegisterForm(Form):

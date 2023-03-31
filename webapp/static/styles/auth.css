@@ -1,4 +1,15 @@
 
+body{
+    margin: 0;
+    padding: 0; 
+    background-color: #091a22eb;
+}
+.alert-warning{
+    display: grid;
+    justify-content: center;
+    color: #f00404;
+    font-weight: bold;
+}
 header .navbar-nav .login-signup button{
     margin-left: 10px;
     border-radius: 10px; 
@@ -14,10 +25,44 @@ header .navbar-nav .login-signup button a{
     padding: 0px 0 15px 0;
     font-size: initial;
 }
-/* header .navbar-nav .login-signup {
-    
-    margin-top: auto;
-    margin-bottom: auto;
-    height: auto;
-    margin-right: 35px;
-} */
+
+
+/* login/ signup section */
+main .login-signup-section {
+    display: grid;
+    justify-content: center;
+    margin: 150px auto;
+    padding: 40px;
+    width: 35%;
+    /* mix-blend-mode: luminosity; */
+    border-radius: 10px;
+}
+
+main .login-signup-section .form-group {
+    margin: 10px 0;
+}
+
+main .login-signup-section .form-group .form-control {
+    border-radius: 5px;
+    border: 1px none;
+    height: 35px;
+    background-color: #fff;
+    /* color: #1c2b33; */
+    padding: 0 20px;
+}
+
+main .login-signup-section .form-group .btn-primary-submit {
+    margin-left: 138px;
+    margin-top: 20px;
+    border-radius: 10px; 
+    height: 40px;
+    width: auto;
+    border: 2px solid rgb(245, 240, 240);
+    padding: 10px 20px;
+    background-color: yellowgreen;
+}
+
+main .login-signup-section .form-group .btn-primary-submit:hover{
+    color: yellowgreen;
+    background-color: #1c2b33;
+}

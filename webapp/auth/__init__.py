@@ -6,7 +6,7 @@ from flask_login import AnonymousUserMixin
 from flask_bcrypt import Bcrypt
 
 
-auth = Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__, static_folder='static', static_url_path='../static')
 from .views import change_email, edit_profile, register, login, reset_password
 
 

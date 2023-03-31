@@ -1,7 +1,6 @@
 from .. import auth
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from ..forms import LoginForm
-from ...models.user import *
 from flask_login import login_user
 
 
@@ -9,9 +8,17 @@ from flask_login import login_user
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).one()
-        login_user(user, remember=form.remember.data)
-        flash("You have been logged in.", category="success")
-        return redirect(url_for('main.index'))
+        from ...models.user import User
+        user = User.query.filter_by(email=form.email.data).one()
+        if user is not None and (user.check_password(form.password.data)):
+            # login user and remember_me cookie session
+            if user:
+                login_user(user, form.remember.data)
+            next = request.args.get('next')
+            if next is None or not next.startswith('/'):
+                next = url_for('main.index')
+            return redirect(next)
+        else:
+            flash('Invalid username or password')
     
-    return render_template('auth/login.html')
+    return render_template('auth/login.html', form=form, remember=True)
