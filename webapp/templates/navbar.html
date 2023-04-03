@@ -1,0 +1,18 @@
+<header style="
+            height: 70px;
+            width: 100%;
+            border-bottom: 1px solid yellowgreen;">
+    <nav class="navbar-nav" style="display: flex;">
+        <div class="navbar-brand">
+            <a href=""><img class="logo-img" src="{{ url_for('static', filename='images/logo.svg') }}"
+            style="height: 55px; 
+            width: auto;
+            margin: 10px 30px;"></a>
+        </div>
+
+        <div class="login-signup" style="margin: auto 35px 25px auto;">
+            <button class="btn" style="background-color: yellowgreen;"><a href="{{ url_for('auth.login') }}">Login</a></button>
+            <button class="btn" style="background-color: rgba(50, 187, 205, 0.671);"><a href="{{ url_for('auth.register') }}">Register</a></button>
+        </div>
+    </nav>
+</header>

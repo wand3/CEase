@@ -1,26 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>HOME</title>
-  </head>
-  <body style="margin: 0; padding: 0;">
-	<header style="background-color: #FF0000;
-		       height: 70px;
-		       width: 100%;">
-	</header>
-	<main>
-		<h2 style="color: #fff3cd">Welcome {{ current_user.username }}!</h2>
-	</main>
-	<footer style="background-color: #00FF00;
-		       height: 60px;
-		       line-height: 60px;
-		       width: 100%;
-		       bottom: 0px;
-		       position: absolute;
-		       text-align: center;">
-	  Holberton School
-	</footer>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+	
+	
+		
+	{% block body %}
+		{% block header %}
+		<!-- <header style="background-color: transparent;
+				height: 70px;
+				width: 100%;">
+		</header> -->
+			{% include "navbar.html" %}
+		{% endblock %}
+
+		<div class="home-contents">
+			<div class="posts">
+				<h2 style="color: #fff3cd">Welcome {{ current_user.username }}!</h2>
+
+			</div>
+
+			<div class="side-contents">
+				<div class="trends">
+					<p>
+						Surprisingly simple, this template extends the base template has expected, and then overrides the title and leftbody block sections. Inside, the leftbody uses two macros to render the posts and their pagination. The macros help us to reuse Jinja2 code and use it like functions, and also to hide some complexity.
+The render_posts macro is in the macros.html that was imported at the top of the file. We use macros more or less like modules in Python, as shown in the following code:
+					</p>
+				</div>
+				<div class="events">
+					<p>Surprisingly simple, this template extends the base template has expected, and then overrides the title and leftbody block sections. Inside, the leftbody uses two macros to render the posts and their pagination. The macros help us to reuse Jinja2 code and use it like functions, and also to hide some complexity.
+						The render_posts macro is in the macros.html that was imported at the top of the file. We use macros more or less like modules in Python, as shown in the following code:
+					</p>
+				</div>
+			</div>
+
+		</div>
+		{% block footer %}
+		<footer style="background-color: transparent;
+				height: 20px;
+				/* line-height: 60px; */
+				width: 100%;
+				bottom: 0px;
+				position: absolute; 
+				text-align: center;
+				color: white;">
+		Made in Jos
+		</footer>
+		{% endblock %}
+	{% endblock %}
+
+	
   </body>
 </html>

@@ -4,21 +4,36 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
   </head>
   <body style="margin: 0; padding: 0;">
-	<header style="background-color: #FF0000;
-		       height: 70px;
-		       width: 100%;">
-	</header>
-	
-	<footer style="background-color: #00FF00;
-		       height: 20px;
-		       line-height: 60px;
-		       width: 100%;
-		       bottom: 0px;
-		       position: absolute;
-		       text-align: center;">
-	  Made in Jos
-	</footer>
+	<section class="bkg" >
+		
+		
+		<!-- body section -->
+		{% block body %}
+			<!-- nav-bar navigation -->
+			{% block header %}
+			
+			{% endblock %}
+			<!-- end nav-bar navigation -->
+
+
+
+
+
+
+
+			<!--footer section -->
+			{% block footer %}
+			
+			{% endblock %}
+			<!--end footer section -->
+		{% endblock %}
+		<!--end body section -->
+
+		
+		
+	</section>
   </body>
 </html>

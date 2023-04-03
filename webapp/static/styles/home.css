@@ -1,0 +1,68 @@
+:root{
+
+    /*      Theme colors        */
+    --text-gray: #3f4954;
+    --text-light : #686666da;
+    --bg-color: #0f0f0f;
+    --white: #ffffff;
+    --midnight: #104f55;
+
+    /* gradient color   */
+    --div-gradient: linear-gradient( to right bottom, rgb(27, 33, 36), rgba(184, 204, 215, 0.15) );
+    /*      theme font-family   */
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin : 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic : 'Livvic', cursive;
+}
+
+
+
+.bkg{
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(to left top, #091a22e8, #000000e8);
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.home-contents{
+    /* background: white; */
+    min-height: 80vh;
+    /* width: 60%; */
+    border-radius: 15px;
+    z-index: 2;
+    backdrop-filter: blur(1rem);
+    display: flex;
+}
+.home-contents .posts{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 200px;
+    background: var(--div-gradient);
+    /* background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    ); */
+    height: fit-content;
+    margin-top: 30px;
+
+}
+
+.home-contents .side-contents{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 30px;
+}
+.home-contents .side-contents div{
+    margin: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--div-gradient)
+}
