@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, Text
 from ..models.user import *
 from ..models.post import *
-import datetime
+from datetime import datetime
 # from ..models.comment import Comment
 
 tags = db.Table(
@@ -20,9 +20,8 @@ tags = db.Table(
 class Post(db.Model):
     ___tablename__ = "post"
     id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(255))
-    text = db.Column(db.Text())
-    publish_date = db.Column(db.DateTime())
+    content = db.Column(db.Text())
+    publish_date = db.Column(db.DateTime(), index=True, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     comments = db.relationship(
         'Comment',
